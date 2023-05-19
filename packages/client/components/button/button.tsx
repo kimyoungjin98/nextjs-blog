@@ -1,7 +1,11 @@
+import { ReactNode } from "react";
+
 /* eslint-disable-next-line */
 export interface ButtonProps {
   type?: 'text' | 'solid';
   color?: 'primary' | 'danger' | 'warning' | 'success';
+  children?:ReactNode;
+  onClick?:()=>void;
 }
 
 export function Button(props: ButtonProps) {
@@ -15,13 +19,13 @@ export function Button(props: ButtonProps) {
 
   return (
     <button
+	onClick={props.onClick}
       className={
         'text-sm px-2 py-1 rounded w-max h-max min-w-max outline-none select-none transition-all flex gap-2 items-center ' +
         setStyle()
       }
     >
-      dd
-      <slot></slot>
+      {props.children}
     </button>
   );
 }
